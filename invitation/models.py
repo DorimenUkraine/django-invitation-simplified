@@ -98,7 +98,7 @@ class Invitation(models.Model):
     #Extends the invitation for X days from the time it's called, where X is the account_invitation_days
     def extend(self):
         date_now = datetime.datetime.now()
-        extend_time = timedelta(days=settings.ACCOUNT_INVITATION_DAYS)
+        extend_time = datetime.timedelta(days=settings.ACCOUNT_INVITATION_DAYS)
         self.expiration_date = date_now + extend_time
         self.save()
 
