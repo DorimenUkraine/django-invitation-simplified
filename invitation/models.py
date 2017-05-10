@@ -58,8 +58,8 @@ class Invitation(models.Model):
     date_invited = models.DateTimeField(_('date invited'))
     expiration_date = models.DateTimeField()
     used = models.BooleanField(default=False)
-    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='invitations_sent')
-    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='invitation_received')
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='invitations_sent', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='invitation_received', on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
 
     objects = InvitationManager()
